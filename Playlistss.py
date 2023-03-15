@@ -52,6 +52,13 @@ elif process_input == 2:
     conf_input=input("Yes To Continue And No To Exit : ")
     print("\n")
     if conf_input.lower().startswith("y"):
+        print("""
+
+-----------------------------------------------------        
+        Please Choose Directory To Save Files
+-----------------------------------------------------
+        
+        """)
         forlder_name = filedialog.askdirectory()
 
 
@@ -69,16 +76,33 @@ elif process_input == 2:
 
             """)
             stm_enum=0
-            for n in i.streams.all():
+            for n in i.streams:
                 print(f"{stm_enum} : {n}")
                 stm_enum=stm_enum+1
 
             # Choosing Stream And Download The Choice
-            
-            stm_input=int(input("Please Choose Suitable Stream : "))
+            print("\n----------------------------------------------------------")
+            stm_input=int(input("          Please Choose Suitable Stream : "))
+            print("----------------------------------------------------------\n")
 
-            video=i.streams.all()[stm_input]
+            video=i.streams[stm_input]
             video.download(forlder_name)
+            print("""
+            
+-----------------------------------------------------            
+            Video Downloaded Successfully
+-----------------------------------------------------
+
+            """)
+
+
+        print("""
+
+-----------------------------------------------------            
+            Playlist Downloaded Successfully
+-----------------------------------------------------
+
+            """)
 
     # Cancellation Functions
 
